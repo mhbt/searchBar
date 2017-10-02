@@ -2,6 +2,7 @@
 <!--
 ----Place the Form inside navbar-collapse class----
 ----place syle in css at last to over write----
+----Black-background is added through a div.black-background----
 -->
 <html lang ="en-US">
 <head>
@@ -13,7 +14,20 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
   <style>
+    body {
+      overflow-x: hidden;
+    }
+    .black-background {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index: 30;
+      left: 0;
+      top: 9%;
+      background-color: rgba(0,0,0,0.5);
+    }
     .navbar-collapse {
+      overflow-x: hidden;
       position: relative;
       perspective: 3000px;
       /*perspective-origin: center;*/
@@ -80,6 +94,7 @@
     }
   </style>
 <body>
+  <div class="black-background hidden"></div>
   <nav class="navbar navbar-default navbar-justified">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -127,8 +142,11 @@
     </div>
   </div>
 </nav>
-
 <script>
+  // window.onLoad = function (){
+  //     document.querySelector(".black-background").style.height = `'${window.innerHeight}'`;
+  // }
+
   document.querySelector("#searchbar-toggle").addEventListener("click", function(e){
       e.preventDefault();
       if(this.innerHTML == "Search") this.innerHTML = "cancel";
@@ -138,6 +156,7 @@
       document.querySelector(".searchbar").classList.toggle("navbar-left");
       document.querySelector(".searchbar").classList.toggle("navbar-nav");
       document.querySelector(".navbar-nav").classList.toggle("hide-navbar-nav");
+      document.querySelector(".black-background").classList.toggle("hidden");
   });
 </script>
 </body>
